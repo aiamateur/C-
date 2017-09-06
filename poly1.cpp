@@ -5,12 +5,13 @@ using namespace std;
 //Abstract Base Class
 class Shapes{
     public:
+    virtual void draw() = 0; //Pure Virtual Function
     //Version 1: virtual void draw() = 0; //Pure Virtual Function
     //Version 2:
-    virtual void draw() = 0;
-    {
-        cout << "Shape: Init Brush" << endl;
-    }
+    //virtual void draw() = 0;
+    //{
+    //    cout << "Shape: Init Brush" << endl;
+    //}
 };
 
 //Concrete Class
