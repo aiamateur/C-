@@ -14,18 +14,30 @@ int compare2(int i, int j)
 
 }
 
+int compare3(int i, int j)
+{
+    printf("In compare3\n");
+    return 1;
+
+}
+
 void whichFunction(int i, int j, int (* compare)(int, int))
 {
     if(i > j)
     {
         compare(i, j);
         printf("Called compare1\n");
-    }else
+    }else if (j > i)
     {
         compare(i, j);
         printf("Called compare2\n");    
+    }else
+    {
+        compare(i, j);
+        printf("Called compare3\n");            
     }
 }
+
 
 typedef int (* compare)(int, int);
 
