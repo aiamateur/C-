@@ -1,1 +1,1 @@
-# C++ Source Code
+# C and C++ Source Code
