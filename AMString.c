@@ -157,7 +157,7 @@ int main()
     printf("&a before %p \n", a);
     //a = "hello";
     strncpy(a, "hello", 5);
-    //What happens here is that "hello" is allocated in static Read Only memory and the pointer
+    //What happens here is that the string literal, "hello" is allocated in static Read Only memory and the pointer
     //is passed to strncpy function which expects a pointer as the second argument
     //From the second pointer strncpy copies to the location pointed to by the first pointer
     printf("&a after %p \n", a); 
