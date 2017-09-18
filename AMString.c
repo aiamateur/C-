@@ -279,5 +279,85 @@ int main()
      
 }
 
+/*Results
+ap: "hello world" 
+bp: "hello world" 
+cp: "world" 
+ap: "hello" 
+bp: "hello" 
+cp: "world" 
+
+/* Example of a function that takes a pointer to a character to manipulate  string
+Purpose: Replace one character with another*/
+
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+     char a[] = "Humpty dumpty sat on a wall";
+     char search_char = 'u';
+     char replace_char = 'o';
+     char *ap = (char*)&a[0];
+     
+     printf("Before \n%s \n", a);
+     
+     while((ap = strchr(ap, search_char)) != NULL)
+     {
+         ap[0] = replace_char;
+     }
+     printf("After \n%s \n", a);
+     
+}
+
+/* The above is the same as the following*/
+
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+     char a[] = "Humpty dumpty sat on a wall";
+     char search_char = 'u';
+     char replace_char = 'o';
+     char *ap = (char*)&a[0];
+     
+     printf("Before \n%s \n", a);
+     
+     while(ap  != NULL)
+     {
+         ap[0] = replace_char;
+         ap = strchr(ap, search_char);
+     }
+     printf("After \n%s \n", a);
+     
+}
+
+/* Declaring an array of (char *), that is pointers to char to declare and define a string array
+*/
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+    char *string_array[5] = {"This", "is", "a", "string", "array"};
+    //Interpret the above correctly
+    //What it says is that string_array contains 5 elements
+    //Each of those elements is a char pointer
+    //Remember a string can be created by by creating a string literal and
+    //assigning a pointer to the location of spring into elements of the string array
+    
+    for(int i = 0; i < 5; i++)
+    {
+        printf("Element %d = %s \n", i, string_array[i]);
+    }
+
+     
+}
+*/
+
     
 
