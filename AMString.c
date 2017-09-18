@@ -185,5 +185,99 @@ a: " hello "
 a: " bello " 
 */
 
+char a[] = "hello"; //a is the name of a character array, a is an array type
+char *b = "hello"; //b is a pointer to a character, b is pointer to character type
+//The name of an array can be passed into a function that expects a pointer to a character, it will work.
+//in that case, the array type decays into a pointer type
 
+//=Functions in string.h and functions that take string type=
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+    char a[] = "hello";
+    printf("a: %p \n", a);
+    printf("&a: %p \n", &a);
+    char *ap = a;
+    printf("ap: %p \n", ap);
+}
+
+/*Results
+a: 0x7ffd80263960 
+&a: 0x7ffd80263960 
+ap: 0x7ffd80263960 
+*/
+
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+    char a[] = "hello";
+    printf("a: %p \n", a);
+    printf("&a: %p \n", &a);
+    char *ap = &a;
+    printf("ap: %p \n", ap);
+}
+
+/* Results
+jdoodle.c: In function 'main':
+jdoodle.c:10:16: warning: initialization from incompatible pointer type [-Wincompatible-pointer-types]
+     char *ap = &a; 
+                ^
+a: 0x7ffea819a460 
+&a: 0x7ffea819a460 
+ap: 0x7ffea819a460 
+
+MY remarks: &a will be a pointer to a char pointer, is it not? is that the source of incompatibility
+*/
+
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+    char a[] = "hello";
+    printf("a: %p \n", a);
+    printf("&a: %p \n", &a);
+    char *ap = &a[0];
+    printf("ap: %p \n", ap);
+}
+
+/* Results
+a: 0x7ffc7c5d1bd0 
+&a: 0x7ffc7c5d1bd0 
+ap: 0x7ffc7c5d1bd0 
+*/
+
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+     char a[] = "hello world";
+     
+     char *ap = (char*)&a[0];
+     char *bp = (char*)&a;
+     char *cp = (char*)&a[6];   
+     
+    printf("ap: \"%s\" \n", ap);
+    printf("bp: \"%s\" \n", bp);
+    printf("cp: \"%s\" \n", cp);
+    
+    a[5] = '\0';
+    
+    printf("ap: \"%s\" \n", ap);
+    printf("bp: \"%s\" \n", bp);
+    printf("cp: \"%s\" \n", cp);
+    
+     
+}
+
+    
 
