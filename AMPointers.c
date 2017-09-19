@@ -83,3 +83,49 @@ a+2: 0x7f72cb01e428
 *(a+1): 66 
 *(a+2): 99 
 */
+
+/*Passing in a pointer variable to a function */
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+
+void f1(int *p)
+{
+    printf("p: %p \n", p);
+    p = realloc(p, 6*sizeof(int));
+    printf("p: %p \n", p);
+    //p is a temporary variable containing the value of a(which is an address itself). p is of type integer pointer.
+    //The scope of p ends when the function exits. This does not change the value or contents of 'a' itself.
+}
+
+void f2(int **p)
+{
+    printf("*p: %p \n", *p); //Contents of p (*p) is the same as contents of 'a'
+    *p = realloc(*p, 6*sizeof(int));
+    printf("*p: %p \n", *p);
+    //p is a pointer variable containing the address of a(which is an address itself). p is of type pointer to an integer pointer.
+    //The scope of p ends when the function exits. This does change the content of a
+}
+
+int main()
+{
+    int *a = malloc(3*sizeof(int));
+    
+    printf("a: %p \n", a);
+    f1(a);
+    printf("a: %p \n", a);    
+    printf("f1 ends");
+    
+    
+    printf("a: %p \n", a);
+    f2(&a);
+    printf("a: %p \n", a);    
+    printf("f2 ends");    
+
+}
+
+/*A lot of the results are compiler and architecture dependent. So, not pasting the results here. But the general principle is this
+//If you pass a pointer as value (a) and reallocate the original pointer does not change as it is passed in as value
+//If you pass a pointer to pointer (&a) and reallocate the the original pointer a, it does change the the contents of a 
+
+
