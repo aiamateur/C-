@@ -67,3 +67,19 @@ int main()
     printf("*(a+1): %d \n", *(a+1));
     printf("*(a+2): %d \n", *(a+2));
 }
+
+/*Results
+
+sizeof(int): 4 
+&a[0]: On heap, element 0 0x7f72cb01e420 
+&a[1]: On heap, element 1 0x7f72cb01e424 
+&a[2]: On heap, element 2 0x7f72cb01e428 
+&a: a is a variable on stack the address of a is, 0x7ffd13b7adb8 
+*a: Contents of a, should be the memory location/address of a[0] on heap 0x7f72cb01e420 
+a: 0x7f72cb01e420 
+a+1: 0x7f72cb01e424 
+a+2: 0x7f72cb01e428 
+*a: 33 
+*(a+1): 66 
+*(a+2): 99 
+*/
